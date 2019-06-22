@@ -5,7 +5,7 @@ mongoose = require("mongoose"),
 methodoverride = require("method-override"), 
 bodyparser = require("body-parser");
 
-mongoose.connect("mongodb://localhost/RESTfulBlog",{ useNewUrlParser: true });
+mongoose.connect("mongodb+srv://jaspreet:<singh>@cluster0-aw4yr.mongodb.net/test?retryWrites=true&w=majority");
 app.set("view engine","ejs");
 app.use(express.static("public"));
 app.use(methodoverride("_method"));
