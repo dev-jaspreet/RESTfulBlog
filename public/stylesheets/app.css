@@ -7,3 +7,6 @@ i.icon{
 #delete{
     display: inline;
 }
+#strong{
+    font-weight: bold;
+}

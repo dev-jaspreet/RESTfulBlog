@@ -1,26 +1,19 @@
 <% include ./partials/header %>
 
 <div class="ui main container">
-    <div class="ui huge header">RestFULL Blog App</div>
+    <div class="ui huge header">User Details</div>
+    <div class="ui compact inverted segment description">
+        <div class="field">
+        <p>Username: <%= currentuser.username %></p>
+    </div>
+    <div class="field">
+        <p>Email ID: <%= currentuser.email %></p>
+    </div>
+    </div>
+    
     <div class="ui four link cards">
         <% blogs.forEach(function(blog){ %>
-        <!--<div class="item">-->
-        <!--    <div class=" centered image">-->
-        <!--        <img src = "<%= blog.image %>">-->
-        <!--    </div>-->
-        <!--    <div class="content">-->
-        <!--        <p class="header"><%= blog.title %></p >-->
-        <!--        <div class="meta">-->
-        <!--            <span><%= blog.created.toDateString() %></span>-->
-        <!--        </div>-->
-        <!--        <div class="description">-->
-        <!--            <p><%- blog.body.substring(0,50) %></p>-->
-        <!--        </div>-->
-        <!--    </div>-->
-        <!--    <div>-->
-        <!--            <a class="ui black basic button" href="/blogs/<%=blog._id%>">Read More</a >-->
-        <!--        </div>-->
-        <!--    </div>-->
+        <% if(currentuser && blog.user.id.equals(currentuser._id)){ %>
         <a class="ui fluid card" href="/blogs/<%=blog._id%>">
             <div class="image">
                 <img src="<%= blog.image %>">
@@ -41,8 +34,8 @@
                 </span>
             </div>
         </a>
+        <% } %>
         <% }) %>
     </div>
 </div>
-
 <% include ./partials/footer %>
