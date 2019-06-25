@@ -11,7 +11,7 @@
     </div>
     </div>
     
-    <div class="ui four link cards">
+    <div class="ui four stackable link cards">
         <% blogs.forEach(function(blog){ %>
         <% if(currentuser && blog.user.id.equals(currentuser._id)){ %>
         <a class="ui fluid card" href="/blogs/<%=blog._id%>">
