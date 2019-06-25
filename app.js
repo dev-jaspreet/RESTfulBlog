@@ -10,7 +10,7 @@ var express = require("express"),
     user = require("./models/user"),
     blog = require("./models/blog");
 
-mongoose.connect("mongodb+srv://jaspreet:singh@cluster0-aw4yr.mongodb.net/test?retryWrites=true&w=majority",{ useNewUrlParser: true,useFindAndModify: false, useCreateIndex: true  });
+mongoose.connect("mongodb+srv://jaspreet:singh@cluster0-aw4yr.mongodb.net/RESTfulBlog?retryWrites=true&w=majority",{ useNewUrlParser: true,useFindAndModify: false, useCreateIndex: true  });
 // mongoose.connect("mongodb://localhost/RESTfulBlog", { useNewUrlParser: true, useFindAndModify: false, useCreateIndex: true });
 
 
