@@ -77,7 +77,7 @@ app.post("/blogs", function(req, res) {
 })
 
 // SHOW ROUTE
-app.get("/blogs/:id", isLoggedIn, function(req, res) {
+app.get("/blogs/:id", function(req, res) {
     blog.findById(req.params.id, function(err, foundblog) {
         if (err) {
             res.redirect("/blogs");
