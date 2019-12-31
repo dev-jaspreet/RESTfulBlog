@@ -10,7 +10,7 @@ var express = require("express"),
     user = require("./models/user"),
     blog = require("./models/blog");
 
-mongoose.connect("mongodb+srv://jaspreet:singh@cluster0-aw4yr.mongodb.net/RESTfulBlog?retryWrites=true&w=majority",{ useNewUrlParser: true,useFindAndModify: false, useCreateIndex: true  });
+mongoose.connect("mongodb+srv://jaspreet:singh@cluster0-aw4yr.mongodb.net/RESTfulBlog?retryWrites=true&w=majority", { useNewUrlParser: true, useFindAndModify: false, useCreateIndex: true });
 // mongoose.connect("mongodb://localhost/RESTfulBlog", { useNewUrlParser: true, useFindAndModify: false, useCreateIndex: true });
 
 
@@ -49,14 +49,14 @@ app.get("/blogs", function(req, res) {
             console.log("ERROR!");
         }
         else {
-            res.render("index", { blogs: blogs,pagetitle:"RESTfulBlog" });
+            res.render("index", { blogs: blogs, pagetitle: "RESTfulBlog" });
         }
     })
 })
 
 // NEW ROUTE
 app.get("/blogs/new", isLoggedIn, function(req, res) {
-    res.render("new",{pagetitle:"Create New Post"});
+    res.render("new", { pagetitle: "Create New Post" });
 })
 
 // CREATE ROUTE
@@ -83,7 +83,7 @@ app.get("/blogs/:id", function(req, res) {
             res.redirect("/blogs");
         }
         else {
-            res.render("show", { blog: foundblog,pagetitle: foundblog.title})
+            res.render("show", { blog: foundblog, pagetitle: foundblog.title })
         }
     })
 })
@@ -95,7 +95,7 @@ app.get("/blogs/:id/edit", function(req, res) {
             res.redirect("/blogs");
         }
         else {
-            res.render("edit", { blog: foundblog,pagetitle: "Edit: " + foundblog.title})
+            res.render("edit", { blog: foundblog, pagetitle: "Edit: " + foundblog.title })
         }
     })
 })
@@ -103,6 +103,7 @@ app.get("/blogs/:id/edit", function(req, res) {
 // UPDATE ROUTE
 app.put("/blogs/:id", function(req, res) {
     req.body.blog.body = req.sanitize(req.body.blog.body);
+    console.log(req.body.blog)
     blog.findByIdAndUpdate(req.params.id, req.body.blog, function(err, updateblog) {
         if (err) {
             res.redirect("/blogs");
@@ -134,7 +135,7 @@ function isLoggedIn(req, res, next) {
 }
 
 app.get("/register", function(req, res) {
-    res.render("register",{pagetitle:"Complete Your Registration"});
+    res.render("register", { pagetitle: "Complete Your Registration" });
 })
 
 app.post("/register", function(req, res) {
@@ -152,7 +153,7 @@ app.post("/register", function(req, res) {
 })
 
 app.get("/login", function(req, res) {
-    res.render("login",{pagetitle:"Login Page"});
+    res.render("login", { pagetitle: "Login Page" });
 })
 
 app.post("/login", passport.authenticate("local", { successRedirect: "/", failureRedirect: "/login" }), function(req, res) {})
@@ -169,7 +170,7 @@ app.get("/user", function(req, res) {
         }
         else {
             // console.log(req.user);
-            res.render("user", { blogs: blogs,pagetitle:"Dashboard"});
+            res.render("user", { blogs: blogs, pagetitle: "Dashboard" });
         }
     })
 })
