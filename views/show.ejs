@@ -1,0 +1,25 @@
+<% include ./partials/header %>
+
+<div class="ui main text container segment">
+    <div class="ui huge header"><%=blog.title%></div>
+    <div class="ui top attached">
+        <div class="item">
+            <img class="ui large centered rounded image bordered" src="<%=blog.image%>">
+            <div class="ui segment compact teal inverted content">
+                <p id = "strong">Created on: <%= blog.created.toDateString() %></p>
+            </div>
+            <div class="ui olive inverted segment description">
+                <p><%- blog.body %></p>
+            </div>
+            <% if(currentuser && blog.user.id.equals(currentuser._id)){ %>
+                <a class="ui orange basic button"  href="/blogs/<%=blog._id%>/edit">Edit Post</a>
+                <form id="delete" action="/blog/<%=blog._id%>?_method=DELETE"method="POST">
+                <button class="ui red basic button">Delete</button>
+            <% } %>
+            
+            </form>
+        </div>
+    </div>
+</div>
+
+<% include ./partials/footer %>

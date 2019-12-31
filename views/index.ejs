@@ -1,0 +1,48 @@
+<% include ./partials/header %>
+
+<div class="ui main container">
+    <div class="ui huge header">RestFULL Blog App</div>
+    <div class="ui four stackable link cards">
+        <% blogs.forEach(function(blog){ %>
+        <!--<div class="item">-->
+        <!--    <div class=" centered image">-->
+        <!--        <img src = "<%= blog.image %>">-->
+        <!--    </div>-->
+        <!--    <div class="content">-->
+        <!--        <p class="header"><%= blog.title %></p >-->
+        <!--        <div class="meta">-->
+        <!--            <span><%= blog.created.toDateString() %></span>-->
+        <!--        </div>-->
+        <!--        <div class="description">-->
+        <!--            <p><%- blog.body.substring(0,50) %></p>-->
+        <!--        </div>-->
+        <!--    </div>-->
+        <!--    <div>-->
+        <!--            <a class="ui black basic button" href="/blogs/<%=blog._id%>">Read More</a >-->
+        <!--        </div>-->
+        <!--    </div>-->
+        <a class="ui fluid card" href="/blogs/<%=blog._id%>">
+            <div class="image">
+                <img src="<%= blog.image %>">
+            </div>
+            <div class="content">
+                <div class="header"><%= blog.title %></div>
+                <div class="description">
+                    <%- blog.body.substring(0,50) %>
+                </div>
+            </div>
+            <div class="extra content">
+                <span class="right floated">
+                    <%= blog.created.toDateString() %>
+                </span>
+                <span>
+                    <i class="meta"></i>
+                    Created On:
+                </span>
+            </div>
+        </a>
+        <% }) %>
+    </div>
+</div>
+
+<% include ./partials/footer %>

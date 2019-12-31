@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+    <link rel="stylesheet" href="/stylesheets/app.css">
+    <title><%=pagetitle%></title>
+</head>
+<body>
+<div class = "ui fixed inverted borderless menu">
+    <div class = "ui container">
+        <div class = "header item"><i class="blogger icon"></i>Blog Site</div>
+        <a href="/" class="item">Home</a>
+        <a href="/blogs/new" class="item">New Post</a>
+        <div class="right menu">
+            <% if(!currentuser){ %>
+                <a href="/login" class="item"><i class="user icon"></i></a>
+                <a href="/register" class="item"><i class="user plus icon"></i></a>
+            <% } else{ %>
+                <a href ="/user" class="item">User Logged In: <%=currentuser.username %></a>
+                <a href="/logout" class="item"><i class="user times icon"></i></a>
+            <% } %>
+        </div>
+    </div>
+</div>
